@@ -1,0 +1,44 @@
+# Python cache and virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.pfx
+*.wallet
+Wallet_*/
+
+# User-uploaded and generated RAG data
+pdfs/
+texts/
+chunks/
+logs/
+screenshots/
+prompt/
+archive/
+
+# Local dependency copies and database files
+packages/
+*.db
+*.sqlite
+*.sqlite3
+*.bak
+*.dump
+
+# Editor and operating-system files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db

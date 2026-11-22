@@ -1,0 +1,21 @@
+# Direct Python runtime dependencies for AskVault.
+# Ollama, Oracle Database 23ai, Tesseract OCR, and Poppler are system-level prerequisites.
+
+# Web API
+Flask==3.1.3
+Flask-Cors==6.0.5
+python-dotenv==1.2.4
+
+# Local LLM, embeddings, and vector database
+ollama==0.6.3
+oracledb==26.1.0
+nltk==3.10.4
+
+# PDF extraction and OCR
+PyMuPDF==1.28.2
+pdfplumber==0.11.10
+pytesseract==0.3.13
+pdf2image==1.17.0
+
+# File ingestion watcher
+watchdog==6.0.0

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ask questions and find answers in your document collection.">
+  <title>AskVault · Document assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='upload.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="AskVault home"><span class="brand-icon">A</span>AskVault<span class="brand-label">DOCUMENT ASSISTANT</span></a>
+    <span class="connection" id="connection" role="status"><span class="dot"></span>Connecting to API</span>
+  </header>
+  <main>
+    <section class="intro">
+      <div class="eyebrow"><span></span> YOUR DOCUMENTS. CLEAR ANSWERS.</div>
+      <h1>Knowledge, just<br>a question away.</h1>
+      <p>Ask a question about your documents. Get a clear answer<br class="desktop-break"> with references to the sources behind it.</p>
+    </section>
+    <section class="workspace" aria-label="Question and answer">
+      <section class="document-tools" aria-labelledby="document-tools-title">
+        <div>
+          <p class="tool-kicker">ADD A DOCUMENT</p>
+          <h2 id="document-tools-title">Upload a PDF, then make it searchable.</h2>
+          <p id="upload-status" class="tool-status">Choose a PDF to add it to your document collection.</p>
+        </div>
+        <div class="tool-actions">
+          <input id="pdf-file" type="file" accept="application/pdf,.pdf" hidden>
+          <label class="secondary-button" for="pdf-file">Choose PDF</label>
+          <button id="upload-button" class="secondary-button" type="button" disabled>Upload PDF</button>
+          <button id="process-button" type="button" disabled>Process PDF</button>
+        </div>
+      </section>
+      <form id="question-form">
+        <label for="question">What would you like to know?</label>
+        <textarea id="question" name="question" rows="3" placeholder="Ask anything about your documents…" required maxlength="4000" aria-describedby="keyboard-hint"></textarea>
+        <div class="form-footer">
+          <div class="retrieval"><label for="top-k">Source passages</label><select id="top-k"><option value="3">3</option><option value="5" selected>5</option><option value="10">10</option><option value="20">20</option></select></div>
+          <button id="ask-button" type="submit"><span id="button-label">Ask question</span><span aria-hidden="true">↗</span></button>
+        </div>
+      </form>
+      <div class="below-form"><span id="keyboard-hint">Ctrl / ⌘ + Enter to ask</span><span>Grounded in your documents</span></div>
+      <div class="suggestions" id="suggestions"><span>TRY ASKING</span><button type="button">What are the different types of agriculture?</button><button type="button">How does organic farming work?</button><button type="button">What is subsistence farming?</button></div>
+      <section id="result" class="result" hidden aria-live="polite" aria-busy="false">
+        <div class="result-header"><h2 id="result-title">Answer</h2><button id="copy-button" class="text-button" type="button" hidden>Copy answer</button></div>
+        <p id="asked-question" class="asked-question"></p>
+        <div id="answer"></div>
+        <div id="sources-container" hidden><h3>Sources</h3><ul id="sources"></ul></div>
+        <p id="result-meta" class="result-meta"></p>
+      </section>
+    </section>
+    <footer><span class="footer-icon" aria-hidden="true">◇</span> Answers are generated from retrieved documents. Check the sources for important details.</footer>
+  </main>
+</body>
+</html>
